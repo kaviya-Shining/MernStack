@@ -1,0 +1,85 @@
+Basic JavaScript Assessment
+Section 1 — Variables & Assignment
+1. Declare three variables to store:
+○ Your name (string)
+○ Your age (number)
+○ Whether you are a student (boolean)
+2. Assign values to those variables and print them to the console.
+3. Create two variables a and b with numeric values. Swap their values without using a third variable.
+4. What will be printed and why? let x = 10;
+let y = x;
+y = 20;
+console.log(x);
+5. Rewrite this using const where appropriate: var pi = 3.14;
+var radius = 5;
+var area = pi * radius * radius;
+Section 2 — Operators
+6. Write code that takes two numbers and prints:
+○ Sum
+○ Difference
+○ Product
+○ Quotient
+○ Remainder
+7. Predict the output: console.log(5 + "5");
+console.log(5 - "2");
+console.log(true + 1);
+8. Write a program that checks whether a number is:
+○ Greater than 100
+○ Equal to 100
+○ Less than 100 (Use comparison operators)
+9. Explain the difference by testing: 5 == "5"
+5 === "5"
+10. Use logical operators to check:
+● Age between 18 and 60 (inclusive)
+● Print eligible/not eligible
+Section 3 — Control Statements
+11. Write an if-else program that:
+● Checks if a number is even or odd
+12. Extend the above:
+● If number divisible by 3 → print "Fizz"
+● If divisible by 5 → print "Buzz"
+● If both → "FizzBuzz"
+13. Use switch:
+● Input a number (1–7)
+● Output corresponding weekday
+14. Write a for loop that:
+● Prints numbers 1–20
+● Prints only even numbers
+15. Write a while loop to:
+● Calculate sum of numbers from 1 to N
+16. Use break and continue:
+● Print numbers 1–10
+● Skip 5
+● Stop entirely at 8
+Section 4 — Functions
+17. Write a function that:
+● Accepts two numbers
+● Returns their sum
+18. Convert the above into:
+● Arrow function syntax
+19. Write a function to:
+● Check if a number is prime
+20. Write a function that:
+● Accepts a string
+● Returns it reversed
+21. What is the output?
+function test() {
+return;
+console.log("Hello");
+}
+test();
+22. Create a function that:
+● Takes an array of numbers
+● Returns the largest number
+Section 5 — Integrated Challenge (Covers Everything)
+23. Build a program that:
+● Accepts student marks
+● Uses a function to calculate grade:
+○ 90+ → A
+○ 75–89 → B
+○ 50–74 → C
+○ <50 → Fail
+● Uses control statements
+● Uses operators
+● Stores result in variables
+● Prints final output
