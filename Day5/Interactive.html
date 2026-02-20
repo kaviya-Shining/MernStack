@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Notes Manager</title>
+
+<style>
+:root {
+  --bg: #f8f9fa;
+  --text: #212529;
+  --card: white;
+  --border: #dee2e6;
+  --primary: #0d6efd;
+  --danger: #dc3545;
+  --success: #198754;
+}
+
+[data-theme="dark"] {
+  --bg: #212529;
+  --text: #e9ecef;
+  --card: #343a40;
+  --border: #495057;
+}
+
+body {
+  font-family: system-ui;
+  background: var(--bg);
+  color: var(--text);
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+#add-btn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+}
+
+#notes-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.note {
+  background: var(--card);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note.completed .text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn-complete { background: var(--success); color: white; padding: 6px 10px; }
+.btn-delete { background: var(--danger); color: white; padding: 6px 10px; }
+
+.badge {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  color: white;
+  width: fit-content;
+}
+
+/* Category Colors */
+.badge.General { background: #6c757d; }
+.badge.Work { background: #0d6efd; }
+.badge.Study { background: #6f42c1; }
+.badge.Personal { background: #fd7e14; }
+
+/* Dashboard */
+.dashboard {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  background: var(--card);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h3 {
+  margin: 0;
+}
+
+#theme-toggle {
+  background: black;
+  color: white;
+  padding: 6px 12px;
+}
+
+#clear-completed {
+  background: var(--danger);
+  color: white;
+  padding: 8px 15px;
+  margin-top: 10px;
+}
+
+/* Modal */
+#modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <h1>Advanced Notes Manager</h1>
+  <button id="theme-toggle">Dark Mode</button>
+</header>
+
+<form id="note-form">
+  <input id="note-input" placeholder="Type note..." required>
+  <select id="category-select">
+    <option value="General">General</option>
+    <option value="Work">Work</option>
+    <option value="Study">Study</option>
+    <option value="Personal">Personal</option>
+  </select>
+  <button id="add-btn">Add</button>
+</form>
+
+<input id="search" placeholder="Search notes...">
+
+<select id="filter-category">
+  <option value="All">All Categories</option>
+  <option value="General">General</option>
+  <option value="Work">Work</option>
+  <option value="Study">Study</option>
+  <option value="Personal">Personal</option>
+</select>
+
+<!-- Dashboard -->
+<div class="dashboard">
+  <div class="stat"><h3 id="total-count">0</h3><small>Total</small></div>
+  <div class="stat"><h3 id="completed-count">0</h3><small>Completed</small></div>
+  <div class="stat"><h3 id="work-count">0</h3><small>Work</small></div>
+  <div class="stat"><h3 id="study-count">0</h3><small>Study</small></div>
+</div>
+
+<ul id="notes-list"></ul>
+
+<button id="clear-completed">Clear Completed</button>
+
+</div>
+
+<!-- Modal -->
+<div id="modal">
+  <div class="modal-box">
+    <h3>Clear completed notes?</h3>
+    <button id="modal-yes" class="btn-delete">Yes</button>
+    <button id="modal-no">No</button>
+  </div>
+</div>
+
+<script>
+const form = document.getElementById("note-form");
+const input = document.getElementById("note-input");
+const categorySelect = document.getElementById("category-select");
+const notesList = document.getElementById("notes-list");
+const searchInput = document.getElementById("search");
+const filterCategory = document.getElementById("filter-category");
+const themeToggle = document.getElementById("theme-toggle");
+const clearBtn = document.getElementById("clear-completed");
+const modal = document.getElementById("modal");
+const modalYes = document.getElementById("modal-yes");
+const modalNo = document.getElementById("modal-no");
+
+const totalCount = document.getElementById("total-count");
+const completedCount = document.getElementById("completed-count");
+const workCount = document.getElementById("work-count");
+const studyCount = document.getElementById("study-count");
+
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+function saveNotes() {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+function updateDashboard() {
+  totalCount.textContent = notes.length;
+  completedCount.textContent = notes.filter(n => n.completed).length;
+  workCount.textContent = notes.filter(n => n.category === "Work").length;
+  studyCount.textContent = notes.filter(n => n.category === "Study").length;
+}
+
+function renderNotes() {
+  notesList.innerHTML = "";
+  notes.forEach((note, index) => {
+    const li = document.createElement("li");
+    li.className = "note";
+    li.setAttribute("draggable", "true");
+    li.dataset.index = index;
+
+    if (note.completed) li.classList.add("completed");
+
+    li.innerHTML = `
+      <div class="text">${note.text}</div>
+      <div class="badge ${note.category}">${note.category}</div>
+      <div class="actions">
+        <button class="btn-complete">Complete</button>
+        <button class="btn-delete">Delete</button>
+      </div>
+    `;
+    notesList.appendChild(li);
+  });
+  updateDashboard();
+}
+
+renderNotes();
+
+/* Add */
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  notes.unshift({
+    text: input.value,
+    category: categorySelect.value,
+    completed: false
+  });
+  input.value = "";
+  saveNotes();
+  renderNotes();
+});
+
+/* Delete & Complete */
+notesList.addEventListener("click", e => {
+  const noteEl = e.target.closest(".note");
+  if (!noteEl) return;
+  const index = noteEl.dataset.index;
+
+  if (e.target.matches(".btn-delete")) notes.splice(index, 1);
+  if (e.target.matches(".btn-complete")) notes[index].completed = !notes[index].completed;
+
+  saveNotes();
+  renderNotes();
+});
+
+/* Search */
+searchInput.addEventListener("input", function() {
+  const term = this.value.toLowerCase();
+  document.querySelectorAll(".note").forEach(note => {
+    const text = note.querySelector(".text").textContent.toLowerCase();
+    note.style.display = text.includes(term) ? "block" : "none";
+  });
+});
+
+/* Filter */
+filterCategory.addEventListener("change", function() {
+  const selected = this.value;
+  document.querySelectorAll(".note").forEach(note => {
+    const category = note.querySelector(".badge").textContent;
+    note.style.display =
+      selected === "All" || category === selected ? "block" : "none";
+  });
+});
+
+/* Theme */
+themeToggle.addEventListener("click", () => {
+  const html = document.documentElement;
+  if (html.getAttribute("data-theme") === "light") {
+    html.setAttribute("data-theme", "dark");
+  } else {
+    html.setAttribute("data-theme", "light");
+  }
+});
+
+/* Modal */
+clearBtn.addEventListener("click", () => modal.style.display = "flex");
+modalNo.addEventListener("click", () => modal.style.display = "none");
+modalYes.addEventListener("click", () => {
+  notes = notes.filter(n => !n.completed);
+  saveNotes();
+  renderNotes();
+  modal.style.display = "none";
+});
+</script>
+
+</body>
+</html>

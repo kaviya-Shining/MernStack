@@ -1,0 +1,46 @@
+Project: Interactive Task / Note Manager (Pure DOM Practice)
+What the app does (in ~1 screen):
+● Header with title + dark/light mode toggle button
+● Input field + “Add Note” button
+● Live search/filter box (filters notes as you type)
+● List of notes/cards — each note has:
+○ Text (editable on double-click)
+○ “Complete” checkbox/button (strikes through + changes color)
+○ “Delete” button
+○ Color picker (changes background of that card)
+● Bottom bar: “Clear completed” button → shows confirmation modal
+● Notes can be reordered by drag & drop
+Main DOM & Events concepts used:
+● getElementById, querySelector, querySelectorAll
+● createElement, append, prepend, remove
+● classList.add/remove/toggle/contains
+● style.backgroundColor, style.display
+● textContent, innerHTML (carefully), value
+● Event listeners: click, input, submit, dblclick, change, keydown
+● Event delegation (most clicks handled on parent)
+● e.target, e.currentTarget, e.preventDefault()
+● .closest(), .dataset, .matches()
+● Drag & drop basics (draggable, dragstart, dragover, drop)
+● Modal show/hide (overlay + click outside to close)
+Very short HTML + CSS + JS structure (you fill the logic)
+HTML <!DOCTYPE html> <html lang="en" data-theme="light"> <head> <meta charset="UTF-8" /> <title>DOM Practice - Notes</title> <style> :root { --bg: #f8f9fa; --text: #212529; --card: white; --border: #dee2e6; --primary: #0d6efd; --danger: #dc3545; --success: #198754; } [data-theme="dark"] { --bg: #212529; --text: #e9ecef; --card: #343a40; --border: #495057; --primary: #6ea8fe; --danger: #ff6b6b; --success: #51cf66; } body { font-family: system-ui; background: var(--bg); color: var(--text); padding: 20px; min-height: 100vh; } .container { max-width: 700px; margin: auto; }
+header { text-align: center; margin-bottom: 20px; } #theme-toggle { padding: 8px 16px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; } form { display: flex; gap: 10px; margin-bottom: 15px; } #note-input { flex: 1; padding: 12px; font-size: 1.1rem; border: 1px solid var(--border); border-radius: 6px; background: var(--card); color: var(--text); } #add-btn { padding: 12px 20px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; } #search { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); } #notes-list { list-style: none; display: grid; gap: 12px; } .note { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px; cursor: grab; } .note.completed .text { text-decoration: line-through; opacity: 0.6; } .note.dragging { opacity: 0.4; transform: scale(0.98); } .actions { display: flex; gap: 10px; justify-content: flex-end; } .btn { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; } .btn-complete { background: var(--success); color: white; } .btn-delete { background: var(--danger); color: white; } .color-picker { width: 32px; height: 32px; border: none; cursor: pointer; } #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; } .modal-box { background: var(--card); padding: 24px; border-radius: 12px; width: 90%; max-width: 400px; text-align: center; } .modal-buttons { margin-top: 20px; display: flex; gap: 12px; justify-content: center; } </style> </head> <body>
+<div class="container"> <header> <h1>Notes Manager</h1> <button id="theme-toggle">Dark Mode</button> </header>
+<form id="note-form"> <input id="note-input" placeholder="Type your note..." required /> <button id="add-btn">Add</button> </form>
+<input id="search" placeholder="Search notes..." />
+<ul id="notes-list"></ul>
+<button id="clear-completed" style="margin-top:20px; background:var(--danger); color:white; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;"> Clear Completed </button>
+</div>
+<!-- Modal --> <div id="modal"> <div class="modal-box"> <h2>Clear all completed notes?</h2> <div class="modal-buttons"> <button id="modal-no" class="btn" style="background:#6c757d; color:white;">No</button> <button id="modal-yes" class="btn" style="background:var(--danger); color:white;">Yes</button> </div> </div> </div>
+<script> // Your JavaScript code here // Select elements // Add note function // Event delegation on #notes-list for complete/delete/color/dblclick // Drag & drop logic // Live search // Theme toggle // Modal logic // etc. </script> </body> </html>
+Quick checklist of what you should implement:
+1. Add note on submit / button click
+2. Show/hide empty list message (optional)
+3. Delete note
+4. Mark as completed (toggle class)
+5. Change note color via color input
+6. Double-click text → turn into <input> to edit
+7. Drag & drop reordering
+8. Live filter notes while typing in search
+9. Dark/light mode toggle
+10. Clear completed → open modal → confirm → remove
