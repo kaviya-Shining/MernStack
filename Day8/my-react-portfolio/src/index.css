@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+  color: white;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* glowing tech blobs */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(150px);
+  z-index: -1;
+}
+
+body::before {
+  background: #38bdf8;
+  top: -100px;
+  left: -100px;
+}
+
+body::after {
+  background: #a855f7;
+  bottom: -100px;
+  right: -100px;
+}
+
+section {
+  padding: 100px 10%;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.navbar a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #38bdf8, #a855f7);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.skill-bar {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.skill-progress {
+  height: 8px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7);
+}

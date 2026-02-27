@@ -1,0 +1,26 @@
+Create a React application using Vite and build a complete Portfolio Website with proper folder structure. The project must include the following:
+1. Create separate functional components for:
+○ Navbar
+○ Home
+○ About
+○ Projects
+○ Contact
+2. Each component must be placed in a separate file and properly imported and exported in App.jsx.
+3. The Navbar component must display your name and navigation links (Home, About, Projects, Contact) using External CSS styling.
+4. The Home component must display your name, role, and a short introduction. Use Inline Styling for at least one element.
+5. The About component must display your education and skills using CSS Module styling.
+6. The Projects component must display at least three project cards. Each card must contain:
+○ Project Name
+○ Description
+○ A button
+7. Use useState to:
+○ Toggle the visibility of the project description OR
+○ Toggle button text between “Show More” and “Show Less”.
+8. The Contact component must display your email and phone number and include a button that performs an action using event handling or useState.
+9. You must use useState in at least two components, and at least one usage must involve conditional rendering.
+10. The project must demonstrate all three types of styling:
+○ Inline CSS
+○ External CSS
+○ CSS Module
+11. Maintain clean code structure, proper indentation, and meaningful component naming.
+12. Push the completed project to GitHub with the repository name: react-vite-portfolio
