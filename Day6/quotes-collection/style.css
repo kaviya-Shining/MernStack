@@ -1,0 +1,136 @@
+/* ===== Body Theme ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #8e2de2, #ff6a00);
+  color: white;
+}
+
+/* ===== Header ===== */
+header {
+  text-align: center;
+  padding: 30px;
+  background: rgba(0,0,0,0.25);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: 1px;
+}
+
+/* ===== Controls ===== */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 220px;
+  outline: none;
+}
+
+/* ===== Buttons ===== */
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #8e2de2;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffd700;
+  color: black;
+}
+
+/* ===== Form Section ===== */
+.form-section {
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== Quotes Grid ===== */
+#quotesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 30px;
+}
+
+/* ===== Quote Card ===== */
+.quote-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  transition: 0.4s;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.quote-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.quote-text {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.quote-author {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===== Badge Base ===== */
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-top: 12px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+/* ===== Updated Category Colors ===== */
+.Motivation { background: #ff4757; }
+.Inspiration { background: #3742fa; }
+.Success { background: #2ed573; color: black; }
+.Life { background: #ffa502; color: black; }
+.Love { background: #ff6b81; }
+.Friendship { background: #1e90ff; }
+.Happiness { background: #ffdd59; color: black; }
+.Education { background: #00d2d3; color: black; }
+.Leadership { background: #57606f; }
+.Self-Growth { background: #7bed9f; color: black; }
+.Positivity { background: #ff7f50; }
+.Wisdom { background: #a55eea; }
+
+/* ===== Delete Button ===== */
+.delete-btn {
+  margin-top: 14px;
+  padding: 6px 14px;
+  background: #ff3f34;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: #c23616;
+}

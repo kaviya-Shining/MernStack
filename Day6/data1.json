@@ -1,0 +1,122 @@
+{
+  "celebrities": [
+    {
+      "id": 1,
+      "name": "Rajinikanth",
+      "username": "superstar",
+      "profession": "Actor",
+      "dateOfBirth": "1950-12-12",
+      "placeOfBirth": "Bengaluru, Karnataka, India",
+      "industry": "Kollywood",
+      "yearsActive": 1975,
+      "famousMovies": [
+        "Baasha",
+        "Sivaji",
+        "Enthiran",
+        "Jailer"
+      ],
+      "awards": [
+        "Padma Bhushan",
+        "Padma Vibhushan",
+        "Dadasaheb Phalke Award"
+      ],
+      "followersInMillions": 12.5,
+      "verified": true
+    },
+    {
+      "id": 2,
+      "name": "Vijay",
+      "username": "thalapathy",
+      "profession": "Actor",
+      "dateOfBirth": "1974-06-22",
+      "placeOfBirth": "Chennai, Tamil Nadu, India",
+      "industry": "Kollywood",
+      "yearsActive": 1992,
+      "famousMovies": [
+        "Ghilli",
+        "Thuppakki",
+        "Mersal",
+        "Leo"
+      ],
+      "awards": [
+        "Tamil Nadu State Film Award",
+        "SIIMA Award"
+      ],
+      "followersInMillions": 18.2,
+      "verified": true
+    },
+    {
+      "id": 3,
+      "name": "Ajith Kumar",
+      "username": "thala",
+      "profession": "Actor",
+      "dateOfBirth": "1971-05-01",
+      "placeOfBirth": "Hyderabad, Telangana, India",
+      "industry": "Kollywood",
+      "yearsActive": 1990,
+      "famousMovies": [
+        "Vaali",
+        "Mankatha",
+        "Viswasam",
+        "Thunivu"
+      ],
+      "awards": [
+        "Filmfare Award South",
+        "Cinema Express Award"
+      ],
+      "followersInMillions": 10.7,
+      "verified": true
+    },
+    {
+      "id": 4,
+      "name": "Nayanthara",
+      "username": "lady_superstar",
+      "profession": "Actress",
+      "dateOfBirth": "1984-11-18",
+      "placeOfBirth": "Bengaluru, Karnataka, India",
+      "industry": "Kollywood",
+      "yearsActive": 2003,
+      "famousMovies": [
+        "Aramm",
+        "Raja Rani",
+        "Bigil",
+        "Netrikann"
+      ],
+      "awards": [
+        "Filmfare Award South",
+        "SIIMA Award"
+      ],
+      "followersInMillions": 9.3,
+      "verified": true
+    },
+    {
+      "id": 5,
+      "name": "Sivakarthikeyan",
+      "username": "sk",
+      "profession": "Actor",
+      "dateOfBirth": "1985-02-17",
+      "placeOfBirth": "Singampunari, Tamil Nadu, India",
+      "industry": "Kollywood",
+      "yearsActive": 2012,
+      "famousMovies": [
+        "Doctor",
+        "Don",
+        "Remo",
+        "Ayalaan"
+      ],
+      "awards": [
+        "Vijay Award",
+        "Edison Award"
+      ],
+      "followersInMillions": 7.8,
+      "verified": true
+    },
+    {
+      "id": "1f25",
+      "name": "Hari",
+      "profession": "summa",
+      "followersInMillions": 100,
+      "verified": false
+    }
+  ]
+}
